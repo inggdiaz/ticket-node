@@ -7,9 +7,7 @@ class Server {
         this.app = express();
         this.port = process.env.SERVER_PORT
 
-        this.dbConnect().then(() => {
-        });
-
+        this.dbConnect()
         this.paths = {
             user: '/api/users'
         }
@@ -23,7 +21,9 @@ class Server {
      */
     async dbConnect() {
         try {
-            await dbConnection();
+            const db = await dbConnection();
+            console.log(db);
+            //Change this for services
         } catch (e) {
             //TODO Register Log
             console.log(e);
